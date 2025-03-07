@@ -1,0 +1,5 @@
+L'algorithme de Bellman-Ford calcule les plus court chemins depuis un sommet source dans un graphe orienté. 
+Contrairement à l'algorithme de Dijkstra, cet algorithme autorise la présence d'arcs à poid négatif.
+Il permet également de détecter la présence d'un circuit absorbant, c'est à dire de poid total négatif, et donc dans lesquels il n'existe pas forcément de plus court chemin entre deux sommets. 
+Les entrées du programme sont le nombre de sommet, le nombre d'arcs et le poid de chacun d'entre eux. 
+Les sorties sont les distances minimales entre chaque sommet et la source. 
