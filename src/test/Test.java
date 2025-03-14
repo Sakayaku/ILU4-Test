@@ -22,36 +22,34 @@ public class Test {
 			String line = reader.readLine();
 			
 			while (line!=null) {
-				List<String> listOracle = Arrays.asList(line.split("="));
-				System.out.println("Test avec " + listOracle.get(0));
-				System.out.println("Le r�sultat devrait �tre " + listOracle.get(1));
+				boolean pass=true;
+				List<String> list = Arrays.asList(line.split("="));
 				line=reader.readLine();
-				List <String> listTest= Arrays.asList(listOracle.get(0).split(" "));
+				
+				List <String> listTest= Arrays.asList(list.get(0).split(" "));
+				List <String> listOracle= Arrays.asList(list.get(1).split(" "));
+				
 				int v=Integer.parseInt(listTest.get(0));
 				int e=Integer.parseInt(listTest.get(1));
-				System.out.println("V est "+v);
-				System.out.println("E est "+e);
 				BellmanFord graph = new BellmanFord(v, e);
-				System.out.println("Le graphe est "+listTest.get(2));
 				List<String> listGraph= Arrays.asList(listTest.get(2).split("_"));
 				for (int i=0;i<e;i++) {
-					List<String> actuel=Arrays.asList(listGraph.get(i+1).split(","));
-					graph.edge[i].source=Integer.parseInt(actuel.get(0));
-					graph.edge[i].destination=Integer.parseInt(actuel.get(1));
-					graph.edge[i].weight=Integer.parseInt(actuel.get(2));
+					List<String> actuelTest=Arrays.asList(listGraph.get(i).split(","));
+					graph.edge[i].source=Integer.parseInt(actuelTest.get(0));
+					graph.edge[i].destination=Integer.parseInt(actuelTest.get(1));
+					graph.edge[i].weight=Integer.parseInt(actuelTest.get(2));
 				}
-				graph.BellmanFordAlgo(graph, 0);
-				/*System.out.println("Le premier est "+listGraph.get(1));
-				System.out.println("Le second est "+listGraph.get(2));
-				System.out.println("Le troisième est "+listGraph.get(3));
-				System.out.println("Le quatrième est "+listGraph.get(4));
-				System.out.println("Le cinquième est "+listGraph.get(5));
-				System.out.println("Le sixième est "+listGraph.get(6));
-				List<String> list1= Arrays.asList(listGraph.get(1).split(","));
-				System.out.println("Le premier est "+list1.get(0));
-				System.out.println("Le second est "+list1.get(1));
-				System.out.println("Le troisième est "+list1.get(2));
-				*/
+				int[] dist=graph.BellmanFordAlgo(graph, 0);
+				
+				List<String> listOraclePartie= Arrays.asList(listOracle.get(1).split("_"));
+				for (int i=0;i<dist.length;i++) {
+					if (Integer.parseInt(listOraclePartie.get(i))!=dist[i]) {
+						System.out.println("i= "+i+" dist[i]= "+dist[i]);
+						pass=false;
+					}
+				}
+				System.out.println("Graphe : "+listGraph+" Oracle : "+listOraclePartie+" R�sultat : "+pass);
+				
 			}
 			reader.close();
 		}catch (IOException e) {

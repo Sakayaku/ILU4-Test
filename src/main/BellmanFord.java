@@ -30,9 +30,10 @@ public class BellmanFord {
     }
 
     // Bellman-Ford Algorithm to find shortest paths from source to all vertices
-    public void BellmanFordAlgo(BellmanFord graph, int source) {
+    public int[] BellmanFordAlgo(BellmanFord graph, int source) {
         int V = graph.V, E = graph.E;
         int dist[] = new int[V];
+        int circuitN[] = new int [0];
 
         // Step 1: Initialize distances from source to all other vertices as INFINITE
         Arrays.fill(dist, Integer.MAX_VALUE);
@@ -56,16 +57,17 @@ public class BellmanFord {
             int weight = graph.edge[j].weight;
             if (dist[u] != Integer.MAX_VALUE && dist[u] + weight < dist[v]) {
                 System.out.println("Graph contains negative weight cycle");
-                return;
+                return circuitN;
             }
         }
 
         // Print distances from source to all vertices
         printDistances(dist, V);
+        return dist;
     }
 
     // Print distances from source to all vertices
-    void printDistances(int dist[], int V) {
+    static void printDistances(int dist[], int V) {
         System.out.println("Vertex Distance from Source:");
         for (int i = 0; i < V; ++i)
             System.out.println(i + "\t\t" + dist[i]);
