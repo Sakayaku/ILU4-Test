@@ -7,8 +7,10 @@ import java.util.Arrays;
 // Bellman For Algorothm
 public class BellmanFord {
       // Graph is Created Using Edge Class
-    static class Edge {
-        int source, destination, weight;
+    public static class Edge {
+        public int source;
+		public int destination;
+		public int weight;
 
         Edge() {
             source = destination = weight = 0;
@@ -16,10 +18,10 @@ public class BellmanFord {
     }
 
     int V, E;
-    Edge edge[];
+    public Edge edge[];
 
     // Constructor to initialize the graph
-    BellmanFord(int v, int e) {
+    public BellmanFord(int v, int e) {
         V = v;
         E = e;
         edge = new Edge[e];
@@ -28,7 +30,7 @@ public class BellmanFord {
     }
 
     // Bellman-Ford Algorithm to find shortest paths from source to all vertices
-    void BellmanFordAlgo(BellmanFord graph, int source) {
+    public void BellmanFordAlgo(BellmanFord graph, int source) {
         int V = graph.V, E = graph.E;
         int dist[] = new int[V];
 
