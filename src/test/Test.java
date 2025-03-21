@@ -14,9 +14,8 @@ import main.BellmanFord.Edge;
 
 public class Test {
 
-	public static void test() {
+	public static void test(File file) {
 		try {
-			File file = new File(".\\src\\test\\ScriptTest.txt");
 			FileReader fileReader = new FileReader(file.getPath());
 			BufferedReader reader=new BufferedReader(fileReader);
 			String line = reader.readLine();
@@ -59,6 +58,11 @@ public class Test {
 	}
 	
 	public static void main(String args[]) {
-		test();
+		File fileQuestion1 = new File(".\\src\\test\\Question1.txt");
+		test(fileQuestion1);
+		File fileQuestion2 = new File(".\\src\\test\\Question2.txt");
+		test(fileQuestion2);
+		File fileQuestion4 = new File(".\\src\\test\\Question4.txt");
+		test(fileQuestion4);
 	}
 }
