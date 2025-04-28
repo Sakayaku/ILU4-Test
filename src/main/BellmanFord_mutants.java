@@ -27,7 +27,7 @@ public class BellmanFord_mutants {
         V = v;
         E = e; //mutation M2
         edge = new Edge[e];
-        for (int i = 0; i < e; ++i) //mutation M1
+        for (int i = 0; i < e; ++i) //mutation M1 et M3
             edge[i] = new Edge();
     }
 
@@ -42,7 +42,7 @@ public class BellmanFord_mutants {
         dist[source] = 0;
 
         // Step 2: Relax all edges |V| - 1 times.
-        for (int i = 1; i < V; ++i) { //mutation M1
+        for (int i = 1; i < V; ++i) { //mutation M1 et M3
             for (int j = 0; j < E; ++j) { //mutation M1 et M2
                 int u = graph.edge[j].source;
                 int v = graph.edge[j].destination;
@@ -53,7 +53,7 @@ public class BellmanFord_mutants {
         }
 
         // Step 3: Check for negative-weight cycles
-        for (int j = 0; j < E; ++j) {
+        for (int j = 0; j < E; ++j) { //mutation M2
             int u = graph.edge[j].source;
             int v = graph.edge[j].destination;
             int weight = graph.edge[j].weight;
