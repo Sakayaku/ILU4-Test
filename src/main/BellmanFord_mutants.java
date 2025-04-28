@@ -7,7 +7,7 @@ import java.util.Arrays;
 import test.Test;
 
 // Bellman For Algorothm
-public class BellmanFord {
+public class BellmanFord_mutants {
       // Graph is Created Using Edge Class
     public static class Edge {
         public int source;
@@ -23,16 +23,16 @@ public class BellmanFord {
     public Edge edge[];
 
     // Constructor to initialize the graph
-    public BellmanFord(int v, int e) {
+    public BellmanFord_mutants(int v, int e) {
         V = v;
-        E = e;
+        E = e; //mutation M2
         edge = new Edge[e];
-        for (int i = 0; i < e; ++i)
+        for (int i = 0; i < e; ++i) //mutation M1
             edge[i] = new Edge();
     }
 
     // Bellman-Ford Algorithm to find shortest paths from source to all vertices
-    public int[] BellmanFordAlgo(BellmanFord graph, int source) {
+    public int[] BellmanFordAlgo(BellmanFord_mutants graph, int source) {
         int V = graph.V, E = graph.E;
         int dist[] = new int[V];
         int circuitN[] = new int [1];
@@ -42,8 +42,8 @@ public class BellmanFord {
         dist[source] = 0;
 
         // Step 2: Relax all edges |V| - 1 times.
-        for (int i = 1; i < V; ++i) {
-            for (int j = 0; j < E; ++j) {
+        for (int i = 1; i < V; ++i) { //mutation M1
+            for (int j = 0; j < E; ++j) { //mutation M1 et M2
                 int u = graph.edge[j].source;
                 int v = graph.edge[j].destination;
                 int weight = graph.edge[j].weight;
@@ -57,7 +57,7 @@ public class BellmanFord {
             int u = graph.edge[j].source;
             int v = graph.edge[j].destination;
             int weight = graph.edge[j].weight;
-            if (dist[u] != Integer.MAX_VALUE && dist[u] + weight < dist[v]) {
+            if (dist[u] != Integer.MAX_VALUE && dist[u] + weight < dist[v]) { //mutation M1
 				System.out.println(Couleur.VIOLET+"Le graphe contient un circuit de poid négatif!"+Couleur.RESET);
                 return circuitN;
             }

@@ -1,1 +1,0 @@
-On ne peut pas trouver une suite de tests qui couvre toutes les instructions car le main ne sera jamais exécuté dans les tests. 
