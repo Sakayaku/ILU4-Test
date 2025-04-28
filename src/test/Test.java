@@ -17,12 +17,6 @@ import main.Couleur;
 
 public class Test {
 	
-	
-	/*public static final String ANSI_RESET = "\u001B[0m";
-	public static final String ANSI_GREEN = "\u001B[32m";
-	public static final String ANSI_RED = "\u001B[31m";
-	public static final String ANSI_PURPLE ="\033[95m";*/
-	
 	private static int nbPass=0;
 	private static int nbFail=0;
 	public static int CAPACITE=1028653052;
@@ -49,7 +43,6 @@ public class Test {
 					if (listTest.size()!=4) {
 						throw new EntriesNumberException("Nombre d'entrées "+listTest.size());
 					}
-					//System.out.println("Test numéro "+(nbPass+nbFail));
 					int v=Integer.parseInt(listTest.get(0));
 					System.out.println("Nombre de sommet : "+v);
 					int e=Integer.parseInt(listTest.get(1));
@@ -77,7 +70,6 @@ public class Test {
 					}
 					for (int i=0;i<dist.length;i++) {
 						if (Integer.parseInt(listOraclePartie.get(i))!=dist[i]) {
-							//System.out.println("i= "+i+" dist[i]= "+dist[i]);
 							pass=false;
 						}
 					}
